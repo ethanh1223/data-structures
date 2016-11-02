@@ -14,3 +14,8 @@ var stackMethods = {};
 stackMethods.size = function() {
   return this.currentSize;
 }
+
+stackMethods.push = function(value) {
+  this[this.currentSize] = value;
+  this.currentSize++
+}
