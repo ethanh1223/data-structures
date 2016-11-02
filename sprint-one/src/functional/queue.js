@@ -7,10 +7,11 @@ var Queue = function() {
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
-    size++
+    size++;
   };
 
   someInstance.dequeue = function() {
+    size--;
   };
 
   someInstance.size = function() {
