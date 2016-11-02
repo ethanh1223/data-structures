@@ -17,7 +17,6 @@ var Queue = function() {
       returnValue = storage[1];
       delete storage[1];
       for ( var k in storage ) {
-        debugger;
         storage[k-1] = storage[k];
         delete storage[k];
       }
