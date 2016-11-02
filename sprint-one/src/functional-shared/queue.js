@@ -21,3 +21,7 @@ queueMethods.enqueue = function(value) {
   this.currentSize++;
   this.storage[this.currentSize] = value;
 }
+
+queueMethods.dequeue = function(value) {
+  this.currentSize--;
+}
