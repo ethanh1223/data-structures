@@ -22,8 +22,14 @@ queueMethods.enqueue = function(value) {
   this.storage[this.currentSize] = value;
 }
 
-queueMethods.dequeue = function(value) {
+queueMethods.dequeue = function() {
   if(this.currentSize > 0) {
     this.currentSize--;
+    var dequeued = this.storage[1]
+    for ( var k in this.storage) {
+      this.storage[k-1] = this.storage[k]
+      delete this.storage[k];
+    }
+    return dequeued;
   }
 }
