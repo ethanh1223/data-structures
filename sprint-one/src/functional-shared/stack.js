@@ -21,5 +21,7 @@ stackMethods.push = function(value) {
 }
 
 stackMethods.pop = function(value) {
-  this.currentSize--;
+  if( this.currentSize > 0){
+    this.currentSize--;
+  }
 }
