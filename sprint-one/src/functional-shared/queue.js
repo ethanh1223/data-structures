@@ -23,5 +23,7 @@ queueMethods.enqueue = function(value) {
 }
 
 queueMethods.dequeue = function(value) {
-  this.currentSize--;
+  if(this.currentSize > 0) {
+    this.currentSize--;
+  }
 }
