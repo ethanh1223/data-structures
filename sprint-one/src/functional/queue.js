@@ -30,6 +30,7 @@ var Queue = function() {
     }
     
     return dequeuedValue;
+
   };
 
   someInstance.size = function() {
