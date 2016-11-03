@@ -1,13 +1,8 @@
 var Queue = function() {
   var someInstance = {};
 
-  // Use an object with numeric keys to store values
   var storage = {};
   var size = 0;
-
-  // Implement the methods below
-
-  // {1:b,2:c}
 
   someInstance.enqueue = function(value) {
     size++;
@@ -15,8 +10,7 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    // dequeue needs to copy storage so that it can replace the values on a different
-    // avoiding the possibility of overwriting key/values
+
     var dequeuedValue = storage[1];
 
     delete storage[0];
