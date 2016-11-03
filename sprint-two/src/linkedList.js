@@ -17,7 +17,6 @@ var LinkedList = function() {
     // assign new node to list.tail
     list.tail = newNode;
     
-    
   };
 
   list.removeHead = function() {
@@ -25,7 +24,6 @@ var LinkedList = function() {
     var removedHead = list.head;
 
     // if no more nodes, set head ot null
-    
     if (removedHead.next === null) {
       list.head = null;
       list.tail = null;
@@ -34,7 +32,6 @@ var LinkedList = function() {
     // make head next element from removed heads pointer
     list.head = removedHead.next;
     return removedHead.value;
-
     
   };
 
@@ -43,11 +40,11 @@ var LinkedList = function() {
     // check if head elem is equal to target
     if (node.value === target) {
       return true;
-    } else if (node.next === undefined) { // if target.next===null, return false
+    } else if (node.next === null) { // if target.next===null, return false
       return false;
     }
     // if not, list.containts(target, node.next)
-    list.contains(target, node.next);
+    return list.contains(target, node.next);
   };
 
   return list;
@@ -64,4 +61,9 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * addToTail() = O(1)
+ * addToTail() = O(1)
+ * addToTail() = O(n)
  */
+
+
