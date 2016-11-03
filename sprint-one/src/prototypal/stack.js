@@ -19,6 +19,6 @@ stackMethods.push = function(value) {
 stackMethods.pop = function() {
   if (this.currentSize > 0) {
     this.currentSize--;
-    return this.storage[this.currentSize + 1];
+    return this.storage[this.currentSize];
   }
 };
