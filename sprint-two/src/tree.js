@@ -31,15 +31,12 @@ treeMethods.contains = function(target, node) {
   // for loop through this.children
   for ( var j = 0; j < node.children.length; j++ ) {
     // recursively call this.contains
-    debugger;
     var isHere = node.contains(target, node.children[j]);
-    debugger;
     if ( isHere === true ) {
       return true;
     }
 
   }
-  debugger;
   return false;
 };
 
