@@ -25,7 +25,7 @@ Graph.prototype.removeNode = function(node) {
 };
 
 Graph.prototype.hasEdge = function(fromNode, toNode) { 
-  if ( this.nodes[fromNode].hasOwnProperty(toNode) ) {
+  if ( this.nodes[fromNode][toNode] !== undefined ) {
     return true;
   }
   return false;
@@ -50,6 +50,15 @@ Graph.prototype.forEachNode = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * .addNode = constant
+ * .contains = linear
+ * .removeNode = linear
+ * .hasEdge = constant
+ * .addEdge = constant
+ * .removeEdge = constant
+ * .forEachNode = linear (pending callback time complexity)
+
+
  */
 
 
