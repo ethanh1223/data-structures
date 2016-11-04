@@ -2,7 +2,6 @@
 
 // Instantiate a new graph
 var Graph = function() {
-  debugger;
   this.nodes = {};
   this.edges = {};
 };
@@ -28,6 +27,8 @@ Graph.prototype.removeNode = function(node) {
   for ( var k in this.nodes ) {
     if ( k === '' + node) {
       delete this.nodes[k];
+      delete this.edges[k];
+      
       return;
     }
   }
@@ -36,9 +37,11 @@ Graph.prototype.removeNode = function(node) {
 // Returns a boolean indicating whether two specified nodes are connected.
 // Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
-  var lookUp = '' + fromNode + ',' + toNode;
-  for ( var k in this.edges ) {
-    if ( k === lookUp) {
+  // var lookUp = '' + fromNode + ',' + toNode;
+  fromNodeString = '' + fromNode;
+  toNodeString = '' + toNode;
+  for ( var k in this.edges ) {  
+    if ( k === fromNodeString && this.edges[fromNodeString].indexOf(toNodeString) !== -1) {
       return true;
     }
   }
@@ -47,21 +50,35 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
-  this.edges['' + fromNode + ',' + toNode] = {fromNode, toNode};
+  // this.edges['' + fromNode + ',' + toNode] = {fromNode, toNode};
+  if ( Array.isArray(this.edges['' + fromNode]) ) {
+    this.edges['' + fromNode].push('' + toNode);
+  } else {
+    this.edges['' + fromNode] = ['' + toNode];
+  }
+
+  if ( Array.isArray(this.edges['' + toNode]) ) {
+    this.edges['' + toNode].push('' + fromNode);
+  } else {
+    this.edges['' + toNode] = ['' + fromNode];
+  }
 };
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  var lookUp = '' + fromNode + ',' + toNode;
-  debugger;
-  for ( var k in this.edges ) {
-    debugger;
-    if ( k === lookUp) {
-      debugger;
-      delete this.edges[k];
-      return;
+  fromNodeString = '' + fromNode;
+  toNodeString = '' + toNode;
+  for ( var k in this.edges ) {    
+    if ( k === fromNodeString && this.edges[fromNodeString].indexOf(toNodeString) !== -1) {
+      toNodeIndex = this.edges[fromNodeString].indexOf(toNodeString);
+      fromNodeIndex = this.edges[toNodeString].indexOf(fromNodeString);
+      
+      this.edges[fromNodeString].splice(toNodeIndex, 1);
+      this.edges[toNodeString].splice(fromNodeIndex, 1);
+      
     }
   }
+  return;
 };
 
 // Pass in a callback which will be executed on each node of the graph.
