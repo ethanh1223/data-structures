@@ -4,6 +4,7 @@ var Tree = function(value) {
   _.extend(newTree, treeMethods);
 
   newTree.children = [];
+  newTree.parent = null;
 
   return newTree;
 };
@@ -13,8 +14,13 @@ var treeMethods = {};
 treeMethods.addChild = function(value) {
   // Create a new tree (obj)
   var childTree = Tree(value);
+  
+  // make current tree the parent of child tree
+  childTree.parent = this;
+
   // Push tree to children (array)
   this.children.push(childTree);
+
   // returned this obj gt 
   return childTree;
 };

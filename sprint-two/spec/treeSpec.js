@@ -48,4 +48,11 @@ describe('tree', function() {
     expect(tree.children[0].children.length).to.equal(0);
   });
 
+  it('should add parent property adding child', function() {
+    tree.addChild(5);
+    tree.children[0].addChild(7);
+    expect(tree.children[0].parent.value).to.equal(undefined);
+    expect(tree.children[0].children[0].parent.value).to.equal(5);
+  });
+
 });
