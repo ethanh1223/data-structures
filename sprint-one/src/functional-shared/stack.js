@@ -22,5 +22,8 @@ stackMethods.pop = function() {
     this.startSize--;
     return this.storage[this.startSize + 1];
   }
+};
 
+stackMethods.peek = function() {
+  return this.storage[this.startSize];
 };

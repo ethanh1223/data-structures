@@ -51,5 +51,11 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
-  // add more tests here to test the functionality of linkedList
+  // return null if removeHead doesn't find a head
+  it('should return null if removeHead is called with an empty list', function() {
+    expect(linkedList.removeHead()).to.equal(null);
+    linkedList.addToTail('Steph');
+    linkedList.removeHead();
+    expect(linkedList.removeHead()).to.equal(null);
+  });
 });

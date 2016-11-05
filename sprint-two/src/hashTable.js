@@ -1,26 +1,26 @@
 var HashTable = function() {
   this._limit = 8;
+  this._currentSize = 0;
   this._storage = LimitedArray(this._limit);
 };
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
-  var bucketContents = []; // Don't need extra variable
   
   if ( bucket !== undefined ) {
-    bucketContents = bucket; // Need to slice array to make a copy
-    for ( var i = 0; i < bucketContents.length; i++ ) {
-      if ( bucketContents[i][0] === k ) {
-        bucketContents.splice(i, 1);
+    for ( var i = 0; i < bucket.length; i++ ) {
+      if ( bucket[i][0] === k ) {
+        bucket.splice(i, 1);
       }
     }
-    bucketContents.push([k, v]);
+    bucket.push([k, v]);
   } else {
-    bucketContents.push([k, v]);
+    bucket = [[k, v]];
   }
   
-  this._storage.set(index, bucketContents);
+  this._storage.set(index, bucket);
+  this._currentSize++;
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -31,24 +31,28 @@ HashTable.prototype.retrieve = function(k) {
     return undefined;
   }
   for ( var i = 0; i < bucket.length; i++ ) {
-  
     if ( bucket[i][0] === k ) {
-
       return bucket[i][1];
-    
     }
-  
   }
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit); 
   this._storage.each(function(e, i, a) {
-    debugger;
     if ( i === index ) {
       a[i] = undefined;
+      this._currentSize--;
     }
   });
+};
+
+HashTable.prototype.isEfficient = function() {
+  if ( this._currentSize < .75 * this._limit && this._currentSize > .25 * this._limit ) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /*

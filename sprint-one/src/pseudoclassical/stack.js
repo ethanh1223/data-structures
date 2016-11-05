@@ -18,3 +18,7 @@ Stack.prototype.pop = function() {
     return this.storage[this.currentSize];
   }
 };
+
+Stack.prototype.peek = function() {
+  return this.storage[this.currentSize - 1];
+};

@@ -9,10 +9,10 @@ var Stack = function() {
   someInstance.push = function(value) {
     size++;
 
-    storage[size] = value; // Storage: {0: a} -- Storage: {}
+    storage[size] = value; // Storage: {1: a} -- Storage: {}
 
   };
-  // {0:a}, size = 1
+  // {1:a}, size = 1
   someInstance.pop = function() {
 
     if (size > 0) {
@@ -25,6 +25,10 @@ var Stack = function() {
 
   someInstance.size = function() {
     return size;
+  };
+
+  someInstance.peek = function() {
+    return storage[size];
   };
 
   return someInstance;

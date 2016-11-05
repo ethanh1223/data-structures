@@ -41,4 +41,11 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  // newly added trees should have no children
+  it('should have no children on newly created tree', function() {
+    expect(tree.children.length).to.equal(0);
+    tree.addChild('Steph');
+    expect(tree.children[0].children.length).to.equal(0);
+  });
+
 });

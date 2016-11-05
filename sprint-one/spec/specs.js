@@ -62,7 +62,7 @@ define([
         expect(stack.size()).to.equal(0);
       });
 
-      it('allows sequentially additing and removing items', function() {
+      it('allows sequentially adding and removing items', function() {
         stack.push('a');
         expect(stack.pop()).to.equal('a');
         stack.push('b');
@@ -85,6 +85,15 @@ define([
         stack.pop();
         expect(stack.pop()).to.equal('b');
       });
+
+      it('expects peek to return most recently added item without manipulating the stack', function() {
+        stack.push('Steph');
+        expect(stack.peek()).to.equal('Steph');
+        expect(stack.size()).to.equal(1);
+      });
+      
+
+      // make sure that pop trully removes item
     });
 
   });
@@ -153,7 +162,7 @@ define([
       it('removes the oldest item, after newer items have already been added and removed', function() {
         queue.enqueue('a');
         queue.enqueue('b');
-         expect(queue.dequeue()).to.equal('a');
+        expect(queue.dequeue()).to.equal('a');
         queue.enqueue('c');
         expect(queue.dequeue()).to.equal('b');
       });

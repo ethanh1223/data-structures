@@ -20,6 +20,11 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
+    // check if head exists
+    if (list.head === null) {
+      return null;
+    }
+
     // remove node at head
     var removedHead = list.head;
 

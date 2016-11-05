@@ -34,7 +34,6 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 Graph.prototype.addEdge = function(fromNode, toNode) {
   this.nodes[fromNode][toNode] = toNode;
   this.nodes[toNode][fromNode] = fromNode;
-  debugger;
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode) {
@@ -43,6 +42,10 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 };
 
 Graph.prototype.forEachNode = function(cb) {
+  if (typeof cb !== 'function') {
+    return -1;
+  }
+
   for ( var k in this.nodes ) {
     cb(k);
   }

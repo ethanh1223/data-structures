@@ -47,6 +47,18 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should check efficiency', function() {
+    hashTable.insert('Steven1', 'Tyler');
+    hashTable.insert('Steven2', 'Tyler');
+    hashTable.insert('Steven3', 'Tyler');
+    hashTable.insert('Steven4', 'Tyler');
+    hashTable.insert('Steven5', 'Tyler');
+    hashTable.insert('Steven6', 'Tyler');
+    hashTable.insert('Steven7', 'Tyler');
+    debugger;
+    expect( hashTable.isEfficient() ).to.equal(false);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

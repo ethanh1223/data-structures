@@ -31,7 +31,6 @@ var BinarySearchTree = function(value) {
       }
     }
   };
-    
 
   node.contains = function(value) {
   // recursively check value property for given value
@@ -59,8 +58,6 @@ var BinarySearchTree = function(value) {
     //return false
     return false;
   };
-
-
 
   // depthFirstLog
   node.depthFirstLog = function(cb) {

@@ -68,4 +68,10 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should ensure that forEachNode is passed a function as an argument', function() {
+    graph.addNode('Draymond');
+    expect(graph.forEachNode('Steph')).to.equal(-1);
+  });
+
 });

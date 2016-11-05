@@ -7,6 +7,9 @@ var Set = function() {
 var setPrototype = {};
 
 setPrototype.add = function(item) {
+  if (typeof item !== 'string') {
+    return 'this function only accepts strings as arguments';
+  }
   if (this._storage.indexOf(item) === -1) {
     this._storage.push(item);
   }
