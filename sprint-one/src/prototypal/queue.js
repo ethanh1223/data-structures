@@ -31,3 +31,7 @@ queueMethods.dequeue = function() {
   } 
 
 };
+
+queueMethods.peek = function() {
+  return this.storage[0];
+};

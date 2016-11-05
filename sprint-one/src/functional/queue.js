@@ -31,5 +31,9 @@ var Queue = function() {
     return size;
   };
 
+  someInstance.peek = function() {
+    return storage[1];
+  };
+
   return someInstance;
 };

@@ -166,6 +166,13 @@ define([
         queue.enqueue('c');
         expect(queue.dequeue()).to.equal('b');
       });
+
+      it('expects peek to return next value to be returned and removed', function() {
+        queue.enqueue('Steph');
+        expect(queue.peek()).to.equal('Steph');
+        expect(queue.size()).to.equal(1);
+      });
+
     });
 
   });

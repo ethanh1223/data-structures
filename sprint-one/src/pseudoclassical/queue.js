@@ -24,3 +24,6 @@ Queue.prototype.dequeue = function() {
   }
 };
 
+Queue.prototype.peek = function() {
+  return this.storage[0];
+};

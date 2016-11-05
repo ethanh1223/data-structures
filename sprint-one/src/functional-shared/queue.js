@@ -30,3 +30,7 @@ queueMethods.dequeue = function() {
     return dequeuedValue;
   }
 };
+
+queueMethods.peek = function() {
+  return this.storage[1];
+};
