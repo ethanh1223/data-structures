@@ -6,17 +6,17 @@ var HashTable = function() {
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
-  var bucketContents = [];
+  var bucketContents = []; // Don't need extra variable
   
   if ( bucket !== undefined ) {
-    bucketContents = bucket;
+    bucketContents = bucket; // Need to slice array to make a copy
     for ( var i = 0; i < bucketContents.length; i++ ) {
       if ( bucketContents[i][0] === k ) {
         bucketContents.splice(i, 1);
       }
     }
-    bucketContents.push([k, v]);
-  } else {
+    .push([k, v]);
+  } else {bucketContents
     bucketContents.push([k, v]);
   }
   
