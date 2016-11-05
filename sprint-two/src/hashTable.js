@@ -15,8 +15,8 @@ HashTable.prototype.insert = function(k, v) {
         bucketContents.splice(i, 1);
       }
     }
-    .push([k, v]);
-  } else {bucketContents
+    bucketContents.push([k, v]);
+  } else {
     bucketContents.push([k, v]);
   }
   
