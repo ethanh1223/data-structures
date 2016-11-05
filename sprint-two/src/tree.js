@@ -46,6 +46,25 @@ treeMethods.contains = function(target, node) {
   return false;
 };
 
+treeMethods.removeParent = function() {
+  // remove current node from parent's child array
+
+  // access parent's child array
+  var parentChildren = this.parent.children.slice();
+
+  
+  for ( var i = 0; i < parentChildren.length; i++) {
+    // look for current node in child array of parent
+    if (parentChildren[i] === this) {
+      // remove current node
+      this.parent.children.splice(i, 1);
+    }
+  }
+      
+  // remove current node's parent property`
+  this.parent = null;
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  * addChild - O(1) (approching linear depending on number of methods)

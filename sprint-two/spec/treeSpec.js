@@ -55,4 +55,18 @@ describe('tree', function() {
     expect(tree.children[0].children[0].parent.value).to.equal(5);
   });
 
+  // test to make sure child is no longer in parent array
+  // test to make sure current tree has no parent
+  it('should remove child - parent relationship', function() {
+    tree.addChild(5);
+    var child = tree.children[0].addChild(7);
+    child.removeParent();
+    expect(child.parent).to.equal(null);
+    tree.children[0].children.map(function (x) {
+      return x.value;
+    });
+    expect(tree.children[0].children.indexOf(7)).to.equal(-1);
+
+  }); 
+
 });
